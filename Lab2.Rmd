@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#1. Creates a vector v of 100 elements with the command v <- rnorm (100). 
+#For this vector, print: the 10th element; elements from the 10th to the 20th inclusive;
+#10 elements starting from the 20th; items greater than 0.
+
+```{r}
+v <- rnorm(100)
+a1 <- v[10]
+print(a1)
+```
+```{r}
+v <- rnorm(100)
+a2 <- v[10:20]
+print(a2)
+```
+```{r}
+v <- rnorm(100)
+x3 <- 10
+a3 <- v[20:(20+x3-1)]
+print(a3)
+```
+```{r}
+v <- rnorm(100)
+a4 <- v[v>0]
+print(a4)
+```
+#2. Create data frame y with the command y <- data.frame (a = rnorm (100), b = 1: 100,
+#cc = sample (letters, 100, replace = TRUE)). To do this, print the data frame: the last 10 lines; 
+#terms from 10 to 20 inclusive; 10th element of column b; the entire cc column, using the column name.
+
+```{r}
+y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE))
+y1 = y2-9
+y2 = nrow(y)
+b2 <- y[(nrow(y)-9):nrow(y),]
+print(b2)
+```
+
+```{r}
+y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE))
+b3 <- y[10:20,]
+print(b3)
+```
+
+```{r}
+y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE))
+b4 <- y[c(10),c(2)]
+print(b4)
+```
+
+```{r}
+y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE))
+b5 <- data.frame(y$cc)
+print(b5)
+```
+
+#3. Create a vector z with elements 1, 2, 3, NA, 4, NA, 5, NA. For this vector: output all elements 
+#that are not NA; calculate the average of all elements of this vector without NA values and with NA values.
+
+```{r}
+z <- c(1, 2, 3, NA, 4, NA, 5, NA)
+z1 <- z[!is.na(z)]
+print(z1)
+```
+```{r}
+z <- c(1, 2, 3, NA, 4, NA, 5, NA)
+meanz = mean(z, na.rm = TRUE)
+meanz2 = mean(z)
+print(meanz)
+print(meanz2)
+```
+
+
+
+

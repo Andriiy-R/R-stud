@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+#In laboratory work it is necessary to write the following functions in R language
+#and to deduce result of work of these functions on arbitrary data:
+
+#1. The add2 (x, y) function, which returns the sum of two numbers.
+```{r}
+add2 <- function(x,y)
+{
+  return(x+y)
+}
+
+add2(10,5)
+```
+#2. A function above (x, n) that takes a vector and a number n and returns all 
+#elements of the vector that are greater than n. The default is n = 10.
+```{r}
+above <- function(x,n=10)
+  {
+  return (x[x > n])
+  }
+
+above(x = c(8:13),n = 9)
+```
+#3. The my_ifelse (x, exp, n) function, which takes the vector x, compares all 
+#its elements with exp to n, and returns the elements of the vector that correspond
+#to the expression condition. For example, my_ifelse (x, “>”, 0) returns all elements
+#of x that are greater than 0. Exp can be equal to “<”, “>”, “<=”, “> =”, “==”. If exp
+#does not match any of these expressions, the vector x is returned.
+
+```{r}
+my_ifelse <- function(x, exp, n)
+{
+  if (exp == '<')
+  return(x[x<n])
+  else if (exp == '>')
+  return(x[x>n])
+  else if (exp == '<=')
+  return(x[x<=n])
+  else if (exp == '>=')
+  return(x[x>=n])
+  else if (exp == '==')
+  return(x[x==n])
+  else
+  return(x)
+}
+x = c(20:40)
+n = 30
+my_ifelse(x,'>=',n)
+```
+#4. The columnmean (x, removeNA) function, which calculates the mean value for 
+#each column of the matrix, or data frame. The removeNA logical parameter 
+#specifies whether to delete the NA value. By default, it is TRUE.
+```{r}
+columnmean <- function(x, removeNA)
+{
+  if (removeNA == TRUE)
+    return(colMeans(x, na.rm=TRUE))
+  else
+    return(colMeans(x))
+}
+x <- matrix(c(6:14,NA,17:19, NA, 20),ncol=3, nrow=5)
+removeNA = TRUE
+columnmean(x,removeNA)
+```
