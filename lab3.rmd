@@ -54,14 +54,10 @@ my_ifelse(x,'>=',n)
 #each column of the matrix, or data frame. The removeNA logical parameter 
 #specifies whether to delete the NA value. By default, it is TRUE.
 ```{r}
-columnmean <- function(x, removeNA)
+columnmean <- function(x, removeNA = TRUE)
 {
-  if (removeNA == TRUE)
-    return(colMeans(x, na.rm=TRUE))
-  else
-    return(colMeans(x))
+    return(colMeans(x, na.rm=removeNA))
 }
 x <- matrix(c(6:14,NA,17:19, NA, 20),ncol=3, nrow=5)
-removeNA = TRUE
-columnmean(x,removeNA)
+columnmean(x,FALSE)
 ```

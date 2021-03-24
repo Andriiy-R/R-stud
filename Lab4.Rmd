@@ -1,0 +1,75 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#В RStudio файл необхідно прочитати за допомогою команди read.csv.
+#В лабораторній необхідно відповісти на запитання:
+#1. Які назви стовпців файлу даних?
+
+
+```{r}
+library(readr)
+hw1_data <- read.csv("D:/Education/5.2/R/hw1_data.csv")
+
+x1 <- colnames(hw1_data)
+print(x1)
+```
+#2. Виведіть перші 6 строк фрейму даних.
+
+```{r}
+x2 <- hw1_data[1:6,]
+x21 <- head(hw1_data,6)
+print(x21)
+```
+
+#3. Скільки спостерігань (строк) в дата фреймі?
+
+```{r}
+x3 <- nrow(hw1_data)
+print(x3)
+```
+#4. Виведіть останні 10 строк дата фрейму.
+
+```{r}
+x4 <- hw1_data[((x3)-9):x3,]
+x41 <- tail(hw1_data,10)
+print(x41)
+```
+#5. Як багато значень «NA» в стовпці «Ozone»?
+
+```{r}
+x5 <- length(which(is.na(hw1_data$Ozone)))
+print(x5)
+```
+#6. Яке середнє (mean) стовпця «Ozone». Виключити «NA» значення.
+
+```{r}
+x6 <- mean(hw1_data$Ozone, na.rm=TRUE)
+print(x6)
+```
+#7. Виведіть частину набору даних (subset) зі значенням «Ozone» > 31 та 
+#«Temp» > 90. Яке середнє (mean) значень «Solar.R» в цьому наборі даних 
+#(subset)?
+
+```{r}
+x7 <- subset(hw1_data, hw1_data$Ozone > 31 & hw1_data$Temp > 90)
+print(x7)
+
+X71 <- mean(x7$Solar.R)
+print(X71)
+```
+#8. Яке середнє значення (mean) для «Temp» для червня (« Month» дорівнює6)?
+  
+```{r}
+x8 <- subset(hw1_data,hw1_data$Month == 6, select = Temp)
+x81 <- mean(x8$Temp,na.rm=TRUE)
+print(x81)
+```
+#9. Яке максимальне значення «Ozone» для травня («Month» дорівнює 5)?
+
+```{r}
+x9 <- subset(hw1_data, hw1_data$Month == 5)
+x91 <- max(x9$Ozone,na.rm=TRUE)
+print(x91)
+```
